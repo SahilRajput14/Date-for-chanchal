@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Date with Chanchal 💖</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #ffe6f0;
+      padding-top: 100px;
+    }
+    h1 {
+      font-size: 2.5rem;
+    }
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #yes {
+      background: #4CAF50;
+      color: white;
+    }
+    #no {
+      background: #f44336;
+      color: white;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+<h1 id="question">Chanchal, will you go on a date with me? 💖</h1>
+
+<button id="yes" onclick="yesClicked()">Yes 😍</button>
+<button id="no" onclick="noClicked()" onmouseover="moveNo()">No 😒</button>
+
+<script>
+let name = "Chanchal";
+
+let messages = [
+  name + ", sach me?? 😭",
+  "Ek baar soch le na " + name + " 🥺",
+  name + ", please chal le naa 😔",
+  "Itna bura hu kya " + name + " 😢",
+  "Last chance de raha hu " + name + " 😤",
+  "System warning: Dil toot raha hai 💔",
+  name + ", ek aur baar soch le 😭",
+  "You cannot escape 😈"
+];
+
+let index = 0;
+let noSize = 18; // starting font size
+
+function yesClicked() {
+  document.body.innerHTML = `
+    <h1>Yayyyy Chanchal!!! 🎉❤️</h1>
+    <h2>I knew it 😎</h2>
+    <p>Get ready for the best date ever 💕</p>
+  `;
+}
+
+function noClicked() {
+  // message loop
+  document.getElementById("question").innerText = messages[index];
+  index = (index + 1) % messages.length;
+
+  // make NO smaller
+  noSize -= 2;
+  if (noSize < 6) noSize = 6; // minimum limit
+
+  let noBtn = document.getElementById("no");
+  noBtn.style.fontSize = noSize + "px";
+  noBtn.style.padding = (noSize / 2) + "px";
+
+  // move randomly
+  moveNo();
+}
+
+function moveNo() {
+  let x = Math.random() * window.innerWidth * 0.8;
+  let y = Math.random() * window.innerHeight * 0.8;
+  let noBtn = document.getElementById("no");
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+</script>
+
+</body>
+</html>
